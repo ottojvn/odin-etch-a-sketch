@@ -18,14 +18,16 @@
         <div id="controlPanel">
           <button id="black">Black</button>
           <button id="colorful">Colorful</button>
+          <button id="eraser">Eraser</button>
           <div id="slider">
             <input
               type="range"
               min="2"
               max="128"
-              oninput="rangeValue.innerText = this.value"
+              value="16"
+              oninput="rangeValue.innerText = `${this.value}x${this.value}`"
             />
-            <p id="rangeValue">64</p>
+            <p id="rangeValue">16x16</p>
           </div>
         </div>
       </header>

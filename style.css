@@ -1,15 +1,24 @@
 body {
+  margin: 0;
+
+  font-family: sans-serif;
   text-align: center;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
 }
 
-#controlPanel {
+#main {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+}
+
+#board {
+  border-style: solid;
+  width: 50vw;
+  min-height: 50vh;
 }
