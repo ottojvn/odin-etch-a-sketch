@@ -8,12 +8,30 @@ function populateGrid(gridSize) {
   board.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
 
   clearChildren(board);
-  for (let i = 0; i < gridSize * gridSize; ++i) {
+  for (let i = 0, size = gridSize * gridSize; i < size; ++i) {
     let square = document.createElement("div");
 
-    square.onclick = function () {
-      this.style.backgroundColor = getActiveColor();
-    };
+    square.style.borderWidth = "1px";
+    square.addEventListener(
+      "mousedown",
+      () => (square.style.backgroundColor = getActiveColor())
+    );
+
+    square.addEventListener("mouseover", (e) => {
+      if (e.buttons == 1) {
+        square.style.backgroundColor = getActiveColor();
+      }
+    });
+
+    square.addEventListener(
+      "mouseenter",
+      () => (square.style.borderStyle = "solid")
+    );
+
+    square.addEventListener(
+      "mouseleave",
+      () => (square.style.borderStyle = "none")
+    );
 
     board.insertAdjacentElement("beforeend", square);
   }
@@ -59,7 +77,6 @@ function getRandomColor() {
 
 const board = document.querySelector("#board");
 const colorButtons = document.querySelectorAll("#controlPanel > button");
-console.log(colorButtons);
 const sliderInput = this.document.querySelector("#slider > input");
 // sliderInput.value should be [2, 64] (this range is set in the HTML file)
 sliderInput.value = 16;
